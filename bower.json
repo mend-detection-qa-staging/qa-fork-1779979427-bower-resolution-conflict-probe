@@ -1,0 +1,15 @@
+{
+  "name": "bower-resolution-conflict-probe",
+  "version": "1.0.0",
+  "description": "Bower probe: scoped jquery conflict resolved via resolutions field, plus a stale resolution entry",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.4.0",
+    "jquery-ui": "^1.12.0",
+    "backbone": "^1.6.0"
+  },
+  "resolutions": {
+    "jquery": "3.7.1",
+    "removed-pkg": "1.0.0"
+  }
+}

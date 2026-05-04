@@ -1,0 +1,130 @@
+{
+    "schema_version": "1.0",
+    "pm": "bower",
+    "pm_version_tested": "1.8",
+    "source_file": "bower.json",
+    "manifest": "bower.json",
+    "lockfile": null,
+    "detection_mode": "manifest-only",
+    "patterns": ["resolution-conflict", "scoped-conflict", "stale-resolution-entry"],
+    "notes": "Conflict is real: jquery-ui 1.12.1 requires jquery>=1.6 (resolves to 4.0.0 unconstrained) while bootstrap 3.4.1 requires jquery '1.9.1 - 3' (caps at 3.x). Bower conflict-resolves to 3.7.1; resolutions field pins the same value explicitly, exercising the resolutions code path. removed-pkg appears in resolutions only; Bower warns 'extra-resolution Unnecessary resolution: removed-pkg#1.0.0' and does not install it. All package versions verified via bower install on 2026-05-04 with bower 1.8.14.",
+    "packages": [
+        {
+            "name": "bootstrap",
+            "artifactId": "bootstrap",
+            "version": "3.4.1",
+            "version_constraint": "^3.4.0",
+            "scope": "runtime",
+            "group": "main",
+            "source": "registry",
+            "direct": true,
+            "declared_jquery_constraint": "1.9.1 - 3",
+            "children": [
+                {
+                    "name": "jquery",
+                    "artifactId": "jquery",
+                    "version": "3.7.1",
+                    "version_constraint": "1.9.1 - 3",
+                    "resolved_by_resolutions": true,
+                    "scope": "runtime",
+                    "group": "main",
+                    "source": "registry",
+                    "direct": false,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "jquery-ui",
+            "artifactId": "jquery-ui",
+            "version": "1.12.1",
+            "version_constraint": "^1.12.0",
+            "scope": "runtime",
+            "group": "main",
+            "source": "registry",
+            "direct": true,
+            "declared_jquery_constraint": ">=1.6",
+            "children": [
+                {
+                    "name": "jquery",
+                    "artifactId": "jquery",
+                    "version": "3.7.1",
+                    "version_constraint": ">=1.6",
+                    "resolved_by_resolutions": true,
+                    "scope": "runtime",
+                    "group": "main",
+                    "source": "registry",
+                    "direct": false,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "backbone",
+            "artifactId": "backbone",
+            "version": "1.6.1",
+            "version_constraint": "^1.6.0",
+            "scope": "runtime",
+            "group": "main",
+            "source": "registry",
+            "direct": true,
+            "children": [
+                {
+                    "name": "underscore",
+                    "artifactId": "underscore",
+                    "version": "1.13.8",
+                    "version_constraint": ">=1.8.3",
+                    "scope": "runtime",
+                    "group": "main",
+                    "source": "registry",
+                    "direct": false,
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "stale_resolution_entries": [
+        {
+            "name": "removed-pkg",
+            "pinned_version": "1.0.0",
+            "in_dependencies": false,
+            "expected_in_tree": false,
+            "assertion": "removed-pkg must NOT appear as any node in the resolved dependency tree"
+        }
+    ],
+    "total_packages": 5,
+    "direct_count": 3,
+    "transitive_count": 2,
+    "unique_packages": [
+        "bootstrap:3.4.1",
+        "jquery-ui:1.12.1",
+        "backbone:1.6.1",
+        "jquery:3.7.1",
+        "underscore:1.13.8"
+    ],
+    "mend_detection_expectations": {
+        "all_packages_must_appear": true,
+        "source_for_all": "registry",
+        "no_missing_transitives": true,
+        "flat_layout": true,
+        "parent_chain_inference_required": true,
+        "resolutions_field_used": true,
+        "resolutions_forces_jquery": "3.7.1",
+        "lockfile_present": false,
+        "bower_components_committed": false,
+        "jquery_shared_by_bootstrap_and_jquery_ui": true,
+        "backbone_underscore_parent_chain": true,
+        "stale_resolution_removed_pkg_must_not_appear": true,
+        "jquery_constraint_bootstrap": "1.9.1 - 3",
+        "jquery_constraint_jquery_ui": ">=1.6",
+        "conflict_nature": "real — jquery-ui>=1.6 resolves to 4.0.0 unconstrained; bootstrap caps at 3.x; resolutions pins 3.7.1",
+        "failure_modes_exercised": [
+            "resolutions field ignored: jquery reported at wrong version (4.0.0 or version mismatch)",
+            "removed-pkg added to tree as false dependency from stale resolutions entry",
+            "all 5 packages reported as direct (flat layout misread — transitive parent-chain not inferred)",
+            "jquery attributed to bootstrap only (jquery-ui parent chain dropped)",
+            "jquery attributed to jquery-ui only (bootstrap parent chain dropped)",
+            "underscore missing or not attributed to backbone"
+        ]
+    }
+}
